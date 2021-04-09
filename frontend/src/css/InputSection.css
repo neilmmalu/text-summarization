@@ -1,0 +1,16 @@
+.row{
+    padding: 15px;
+}
+
+.ui.container{
+    padding: 50px;
+}
+
+.ui.one.column.grid{
+    justify-content:center;
+}
+
+.textarea{
+    width: 600px; 
+    height: 300px;
+}
