@@ -1,6 +1,0 @@
-It is my goal to improve the quality of life of people through my application development skills, and I'm specifically geared towards C++/python based backend/system roles that form the core of these applications.
-
-This drove me to get a Masters degree from Syracuse, and is what attracts me to this particular opportunity. I am a huge fan of Bloomberg's support for, and innovation in FinTech software. I believe these products tremendously impact clients by improving the usability and reliability of software and data which is available to them. I wish to contribute to these products and more importantly, learn the most modern state-of-the-art practices to improve my skills so that I can make a real impact on people who rely on these products.
-
-
-I was first introduced to programming in high school, and I happened to excel at the course. My mother, who is my role model, also pursued a career in a similar field. This drove my passion towards software, and coupled with the ubiquity of computers in this era, made software development an obvious career path for me. Over the course of my educational and internship experiences, I've really enjoyed solving problems and creating products that help society at large. Hence, it's my goal to continue doing so in a professional environment on a larger scale.
