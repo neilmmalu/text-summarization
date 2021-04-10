@@ -1,13 +1,12 @@
-from django.conf import settings
+import os
 from celery import Celery
+
+from django.conf import settings
 from celery.schedules import crontab
 
-redis_host = settings.REDIS_HOST
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
 
-app = Celery('project',
-             broker='redis://' + settings.REDIS_HOST + ':6379',
-             backend='redis://’ + settings.REDIS_HOST + ‘:6379',
-             include=['textSum.tasks'])
+app = Celery('proj')
 
 app.conf.update(CELERY_TASK_SERIALIZER='json',
                 CELERY_RESULT_SERIALIZER='json',
@@ -20,5 +19,9 @@ app.conf.update(CELERY_TASK_SERIALIZER='json',
                     }
                 })
 
-if __name__ == "__main__":
-    app.start()
+app.autodiscover_tasks()
+
+
+@app.task(bind=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')
