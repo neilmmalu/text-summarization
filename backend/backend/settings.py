@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'textSum',
     'corsheaders',
     'rest_framework',
+    'celery',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
+
+REDIS_HOST = 'localhost'
 
 USE_I18N = True
 
