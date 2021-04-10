@@ -5,4 +5,5 @@ from .models import Text
 class TextSerializer(serializers.ModelSerializer):
     class Meta:
         model = Text
-        fields = ('id', 'inputText', 'summarizedText', 'upload', 'completed')
+        fields = ('transactionID', 'inputText', 'summarizedText', 'upload',
+                  'completed')

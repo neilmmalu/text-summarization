@@ -6,5 +6,6 @@ from .models import Text
 
 # Create your views here.
 class TextView(viewsets.ModelViewSet):
+    lookup_field = 'transactionID'
     serializer_class = TextSerializer
     queryset = Text.objects.all()

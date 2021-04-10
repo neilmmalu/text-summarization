@@ -3,13 +3,14 @@ import "../css/InputSection.css";
 import axios from "axios";
 
 class InputSection extends React.Component {
-  state = {
-    isUploading: false,
-    text: "",
-    progress: 0,
-    file: null,
-    error: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "",
+      file: null,
+      error: true,
+    };
+  }
 
   onProcess = () => {
     this.setState({ error: false });
@@ -22,7 +23,9 @@ class InputSection extends React.Component {
       formData.append("upload", this.state.file, this.state.file?.name);
     }
 
-    axios.post("http://localhost:8000/api/texts/", formData);
+    axios.post("http://localhost:8000/api/texts/", formData).then((res) => {
+      this.props.update(res.data.transactionID);
+    });
   };
 
   onFileChange = (e) => {

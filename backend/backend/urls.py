@@ -20,8 +20,9 @@ from textSum import views
 
 router = routers.DefaultRouter()
 router.register(r'texts', views.TextView, 'text')
+router.register(r'texts/<str:transactionID>', views.TextView, 'text')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
 ]
