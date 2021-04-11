@@ -4,20 +4,19 @@ from celery import Celery
 from django.conf import settings
 from celery.schedules import crontab
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
-app = Celery('proj')
+app = Celery('textSum',
+             broker='redis://' + settings.REDIS_HOST + ':6379',
+             backend='redis://' + settings.REDIS_HOST + ':6379')
 
-app.conf.update(CELERY_TASK_SERIALIZER='json',
-                CELERY_RESULT_SERIALIZER='json',
-                CELERY_TASK_RESULT_EXPIRES=3600,
-                CELERY_TIMEZONE='EST',
-                CELERYBEAT_SCHEDULE={
-                    'task1': {
-                        'task': 'textSum.tasks.task1',
-                        'schedule': crontab(minute=0, hour=0)
-                    }
-                })
+app.conf.update(
+    CELERYBEAT_SCHEDULE={
+        'task1': {
+            'task': 'textSum.textSum.task1',
+            'schedule': crontab(minute=33, hour=2)
+        }
+    })
 
 app.autodiscover_tasks()
 

@@ -44,12 +44,10 @@ class Text(LifecycleModelMixin, models.Model):
             txt = self.inputText
         else:
             #read file
-            print(self.upload)
             f = open(str(self.upload))
 
             txt = f.read()
 
-        print(txt)
         sumStr = "Dummy summarized text"
         # sumStr = summarize(txt)
 
