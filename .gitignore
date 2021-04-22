@@ -12,7 +12,6 @@
 /backend/*sqlite3
 /backend/uploads/*
 /backend/backend/__pycache__/*
-/datasets/*
 
 # production
 /build
