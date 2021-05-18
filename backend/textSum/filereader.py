@@ -26,7 +26,7 @@ def readWebVTT(path):
     main_speaker, content = max(d.items(), key=lambda x: len(x[1]))
     content = list(filter(lambda x: len(x.split()) >= 5, content))
     print(content)
-    return content
+    return '\n'.join(content)
 
 
 def readFile(path):
