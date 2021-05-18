@@ -6,4 +6,4 @@ class TextSerializer(serializers.ModelSerializer):
     class Meta:
         model = Text
         fields = ('transactionID', 'inputText', 'summarizedText', 'upload',
-                  'completed')
+                  'completed', 'scores')
