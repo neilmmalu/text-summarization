@@ -26,7 +26,7 @@ class OutputSection extends React.Component {
         axios.get("/api/texts/" + this.state.transactionID).then((res) => {
           this.setState({
             summarizedText: res.data.summarizedText,
-            scores: res.data.scores,
+            scores: JSON.parse(res.data.scores),
           });
         });
       });
@@ -35,7 +35,7 @@ class OutputSection extends React.Component {
 
   render() {
     //random comment
-    console.log(this.state.scores)
+    console.log(typeof(this.state.scores))
     return (
       <div className="ui container">
         <div className="ui one column grid">
