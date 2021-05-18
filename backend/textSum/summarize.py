@@ -21,6 +21,7 @@ def t5Model(text):
 
 def summarize(text, summaryType):
     summarizedText = text
+    print(summaryType)
     if summaryType == "similarityMatrix":
         summarizedText = similarityMatrix(text)
     elif summaryType == "nltkSummarizer":
