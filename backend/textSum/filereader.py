@@ -45,7 +45,7 @@ def readFile(path):
     else:
         print(ext)
         print(fileName)
-        text = textract(str(path))
+        text = textract(path)
         print(text)
         text = text.decode('utf-8')
 
