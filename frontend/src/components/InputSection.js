@@ -12,34 +12,34 @@ class InputSection extends React.Component {
       text: "",
       file: null,
       error: true,
-      alloptions: [
+      allOptions: [
         {
-          key: "Extractive: Similarity Matrix",
+          key: "similarityMatrix",
           text: "Extractive: Similarity Matrix",
           value: "Extractive: Similarity Matrix",
         },
         {
-          key: "Extractive: Weighted Frequency",
-          text: "Extractive: Weighted Frequency",
-          value: "Extractive: Weighted Frequency",
+          key: "nltkSummarizer",
+          text: "Extractive: NLTK",
+          value: "Extractive: NLTK",
         },
         {
-          key: "Extractive: LSA",
+          key: "lsaSummarizer",
           text: "Extractive: LSA",
           value: "Extractive: LSA",
         },
         {
-          key: "Extractive: KLSum",
+          key: "klSummarizer",
           text: "Extractive: KLSum",
           value: "Extractive: KLSum",
         },
         {
-          key: "Extractive: Luhn",
+          key: "luhnSummarizer",
           text: "Extractive: Luhn",
           value: "Extractive: Luhn",
         },
         {
-          key: "Extractive: Lex Rank",
+          key: "lexRankSummarizer",
           text: "Extractive: Lex Rank",
           value: "Extractive: Lex Rank",
         },
@@ -90,6 +90,7 @@ class InputSection extends React.Component {
 
   summarizeOps = (e, data) => {
     console.log(data.value);
+    console.log(data.key);
     this.setState({ option: data.value });
   };
 
@@ -101,7 +102,7 @@ class InputSection extends React.Component {
             <Dropdown
               placeholder="Select Type of Summarizer"
               selection
-              options={this.state.alloptions}
+              options={this.state.allOptions}
               value={this.state.option}
               onChange={this.summarizeOps}
             />
