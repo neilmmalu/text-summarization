@@ -1,27 +1,9 @@
 from .evaluate import summary_evaluation
-
-
-def nltkSummarizer(text):
-    return text
+from .nltkSum import nltk_summarizer
+from .sumySum import *
 
 
 def similarityMatrix(text):
-    return text
-
-
-def lsaSummarizer(text):
-    return text
-
-
-def klSummarizer(text):
-    return text
-
-
-def luhnSummarizer(text):
-    return text
-
-
-def lexRankSummarizer(text):
     return text
 
 
@@ -42,15 +24,15 @@ def summarize(text, summaryType):
     if summaryType == "similarityMatrix":
         summarizedText = similarityMatrix(text)
     elif summaryType == "nltkSummarizer":
-        summarizedText = nltkSummarizer(text)
+        summarizedText = nltk_summarizer(text)
     elif summaryType == "lsaSummarizer":
-        summarizedText = lsaSummarizer(text)
+        summarizedText = lsa_summarizer(text)
     elif summaryType == "klSummarizer":
-        summarizedText = klSummarizer(text)
+        summarizedText = kl_summarizer(text)
     elif summaryType == "luhnSummarizer":
-        summarizedText = luhnSummarizer(text)
+        summarizedText = luhn_summarizer(text)
     elif summaryType == "lexRankSummarizer":
-        summarizedText = lexRankSummarizer(text)
+        summarizedText = lexrank_summarizer(text)
     elif summaryType == "huggingFace":
         summarizedText = huggingFace(text)
     elif summaryType == "gpt":

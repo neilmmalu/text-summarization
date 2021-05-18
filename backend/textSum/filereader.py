@@ -1,4 +1,6 @@
 import textract
+import webvtt
+from collections import defaultdict
 
 extensions = {
     '.csv', '.doc', '.docx', '.eml', '.epub', '.gif', '.jpeg', '.jpg', '.json',
@@ -21,6 +23,18 @@ def cleanText(text, ext):
     return text
 
 
+def readWebVTT(fileName):
+    d = defaultdict(list)
+    for caption in webvtt.read(fileName):
+        t = caption.text.split(":")
+        if len(t) > 1:
+            d[t[0]].append(t[1])
+    main_speaker, content = max(d.items(), key=lambda x: len(x[1]))
+    content = list(filter(lambda x: len(x.split()) >= 5, content))
+
+    return content
+
+
 def readFile(path):
     fileName = getFileName(path)
 
@@ -32,7 +46,7 @@ def readFile(path):
             pass
         if ext == "vtt":
             # WebVTT reader
-            pass
+            text = readWebVTT(fileName)
         else:
             return None
     else:

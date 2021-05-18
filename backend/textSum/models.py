@@ -48,21 +48,18 @@ class Text(LifecycleModelMixin, models.Model):
         if self.inputText:
             txt = self.inputText
         else:
-            #read file
-            # f = open(str(self.upload))
-
             txt = readFile(str(self.upload))
 
-        sumStr = "Dummy summarized text"
         sumStr, scores = summarize(txt, self.summaryType)
         print(type(scores[0]))
         t = Text.objects.get(transactionID=self.transactionID)
         t.summarizedText = sumStr
         t.completed = True
-        t.scores = json.dumps(dict({
-            "Jaccard": str(scores[0]),
-            "Cosine": str(scores[1]),
-            "Gensim": str(scores[2]),
-            "Rogue": str(scores[3])
-        }))
+        t.scores = json.dumps(
+            dict({
+                "Jaccard": str(scores[0]),
+                "Cosine": str(scores[1]),
+                "Gensim": str(scores[2]),
+                "Rogue": str(scores[3])
+            }))
         t.save()
