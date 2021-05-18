@@ -37,7 +37,7 @@ def readWebVTT(fileName):
 
 def readFile(path):
     fileName = getFileName(path)
-
+    print(fileName)
     ext = getFileExtension(fileName)
 
     if ext not in extensions:
