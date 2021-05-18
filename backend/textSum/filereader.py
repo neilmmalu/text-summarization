@@ -40,3 +40,4 @@ def readFile(path):
         text = text.decode('utf-8')
 
     cleanedText = cleanText(text, ext)
+    return cleanedText

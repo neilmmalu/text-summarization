@@ -4,6 +4,7 @@ from django_lifecycle import LifecycleModelMixin, hook, AFTER_CREATE
 import os
 from uuid import uuid4
 from django.utils.deconstruct import deconstructible
+from .filereader import readFile
 
 
 @deconstructible
@@ -35,6 +36,7 @@ class Text(LifecycleModelMixin, models.Model):
                                      blank=True,
                                      unique=True,
                                      default=uuid4)
+    summaryType = models.CharField(max_length=10000000, blank=True)
 
     @hook(AFTER_CREATE)
     def summarizeText(self):
@@ -44,12 +46,12 @@ class Text(LifecycleModelMixin, models.Model):
             txt = self.inputText
         else:
             #read file
-            f = open(str(self.upload))
+            # f = open(str(self.upload))
 
-            txt = f.read()
+            txt = readFile(str(self.upload))
 
         sumStr = "Dummy summarized text"
-        # sumStr = summarize(txt)
+        # sumStr = summarize(txt, summaryType)
 
         t = Text.objects.get(transactionID=self.transactionID)
         t.summarizedText = sumStr
