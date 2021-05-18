@@ -20,6 +20,7 @@ def getFileExtension(fileName):
 def readWebVTT(path):
     d = defaultdict(list)
     for caption in webvtt.read(path):
+        print(caption)
         t = caption.text.split(":")
         if len(t) > 1:
             d[t[0]].append(t[1])
