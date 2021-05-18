@@ -89,20 +89,23 @@ class InputSection extends React.Component {
     if (this.state.type !== null) {
       formData.append("summaryType", this.state.type);
     }
-    
-      if(window.location.origin === "http://localhost:3000"){
-          axios.defaults.baseURL = "http://localhost:8000";
-      } else {
-          axios.defaults.baseURL = window.location.origin + ":8000";
-      }
 
-      console.log(axios.defaults.baseURL + "/api/texts/");
+    if (window.location.origin === "http://localhost:3000") {
+      axios.defaults.baseURL = "http://localhost:8000";
+    } else {
+      axios.defaults.baseURL = window.location.origin + ":8000";
+    }
 
-    axios.post("/api/texts/", formData).then((res) => {
-      this.props.update(res.data.transactionID);
-    }).catch((err) => {
+    console.log(axios.defaults.baseURL + "/api/texts/");
+    axios.defaults.baseURL = "http://retr0-su-nlp.duckdns.org:8000";
+    axios
+      .post("/api/texts/", formData)
+      .then((res) => {
+        this.props.update(res.data.transactionID);
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
   };
 
   onFileChange = (e) => {

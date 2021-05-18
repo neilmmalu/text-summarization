@@ -48,7 +48,7 @@ def summary_evaluation(actual_text_tosum, generated_summary, human_summary):
     jc_score, co_score, ge_score, ro_score = None, None, None, None
     if actual_text_tosum is not None:
         jc_score = get_jaccard_sim(generated_summary, actual_text_tosum)
-        co_score = get_cosine_sim(generated_summary, actual_text_tosum)
+        co_score = get_cosine_sim(generated_summary, actual_text_tosum)[0, 1]
         ge_score = get_gensim(generated_summary, actual_text_tosum)
         print("Jaccard Similarity Score:", jc_score)
         print("Cosine Similarity Score:", co_score)

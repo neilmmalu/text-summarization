@@ -8,7 +8,10 @@ class OutputSection extends React.Component {
     this.state = {
       summarizedText: "",
       transactionID: "",
-      scores: "",
+      jaccard: null,
+      cosine: null,
+      gensim: null,
+      rogue: null,
     };
   }
 
@@ -22,11 +25,16 @@ class OutputSection extends React.Component {
         } else {
           axios.defaults.baseURL = window.location.origin + ":8000";
         }
-
+        axios.defaults.baseURL = "http://retr0-su-nlp.duckdns.org:8000";
         axios.get("/api/texts/" + this.state.transactionID).then((res) => {
+          let obj = JSON.parse(res.data.scores);
+          console.log(obj);
           this.setState({
             summarizedText: res.data.summarizedText,
-            scores: JSON.parse(res.data.scores),
+            jaccard: obj.Jaccard,
+            cosine: obj.Cosine,
+            gensim: obj.Gensim,
+            rogue: obj.Rogue,
           });
         });
       });
@@ -35,7 +43,7 @@ class OutputSection extends React.Component {
 
   render() {
     //random comment
-    console.log(typeof(this.state.scores))
+    console.log(typeof this.state.scores);
     return (
       <div className="ui container">
         <div className="ui one column grid">
@@ -50,7 +58,22 @@ class OutputSection extends React.Component {
             ></textarea>
           </div>
           <div className="row">
-            <span>{this.state.scores}</span>
+            {this.state.jaccard && (
+              <span>Jaccard Score: {this.state.jaccard}</span>
+            )}
+          </div>
+          <div className="row">
+            {this.state.cosine && (
+              <span>Cosine Score: {this.state.cosine}</span>
+            )}
+          </div>
+          <div className="row">
+            {this.state.gensim && (
+              <span>Gensim Score: {this.state.gensim}</span>
+            )}
+          </div>
+          <div className="row">
+            {this.state.rogue && <span>Rogue Score: {this.state.rogue}</span>}
           </div>
         </div>
       </div>
