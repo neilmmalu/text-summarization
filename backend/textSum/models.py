@@ -39,7 +39,7 @@ class Text(LifecycleModelMixin, models.Model):
                                      unique=True,
                                      default=uuid4)
     summaryType = models.CharField(max_length=10000000, blank=True)
-    scores = models.JSONField()
+    scores = models.JSONField(blank=True)
 
     @hook(AFTER_CREATE)
     def summarizeText(self):
