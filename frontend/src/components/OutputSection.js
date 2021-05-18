@@ -35,7 +35,7 @@ class OutputSection extends React.Component {
 
   render() {
     //random comment
-
+    console.log(this.state.scores)
     return (
       <div className="ui container">
         <div className="ui one column grid">
