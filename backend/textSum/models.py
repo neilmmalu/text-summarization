@@ -5,6 +5,8 @@ import os
 from uuid import uuid4
 from django.utils.deconstruct import deconstructible
 from .filereader import readFile
+import json
+from .summarize import summarize
 
 
 @deconstructible
@@ -37,6 +39,7 @@ class Text(LifecycleModelMixin, models.Model):
                                      unique=True,
                                      default=uuid4)
     summaryType = models.CharField(max_length=10000000, blank=True)
+    scores = models.JSONField()
 
     @hook(AFTER_CREATE)
     def summarizeText(self):
@@ -51,9 +54,15 @@ class Text(LifecycleModelMixin, models.Model):
             txt = readFile(str(self.upload))
 
         sumStr = "Dummy summarized text"
-        # sumStr = summarize(txt, summaryType)
+        sumStr, scores = summarize(txt, self.summaryType)
 
         t = Text.objects.get(transactionID=self.transactionID)
         t.summarizedText = sumStr
         t.completed = True
+        t.scores = json.dumps({
+            "Jaccard": scores[0],
+            "Cosine": scores[1],
+            "Gensim": scores[2],
+            "Rogue": scores[3]
+        })
         t.save()
