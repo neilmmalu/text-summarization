@@ -17,9 +17,9 @@ def getFileExtension(fileName):
     return fileName.split('.')[-1]
 
 
-def readWebVTT(fileName):
+def readWebVTT(path):
     d = defaultdict(list)
-    for caption in webvtt.read(fileName):
+    for caption in webvtt.read(path):
         t = caption.text.split(":")
         if len(t) > 1:
             d[t[0]].append(t[1])
@@ -39,7 +39,7 @@ def readFile(path):
             pass
         if ext == "vtt":
             # WebVTT reader
-            text = readWebVTT(fileName)
+            text = readWebVTT(path)
         else:
             return None
     else:
