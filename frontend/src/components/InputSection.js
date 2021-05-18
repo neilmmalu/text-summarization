@@ -96,7 +96,7 @@ class InputSection extends React.Component {
       axios.defaults.baseURL = window.location.origin + ":8000";
     }
 
-    console.log(axios.defaults.baseURL + "/api/texts/");
+    // console.log(axios.defaults.baseURL + "/api/texts/");
     axios.defaults.baseURL = "http://retr0-su-nlp.duckdns.org:8000";
     axios
       .post("/api/texts/", formData)
@@ -133,7 +133,7 @@ class InputSection extends React.Component {
   };
 
   summarizeOps = (e, data) => {
-    console.log(this.types[data.value]);
+    // console.log(this.types[data.value]);
     this.setState({ option: data.value, type: this.types[data.value] });
   };
 

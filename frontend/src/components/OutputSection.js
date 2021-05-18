@@ -18,7 +18,7 @@ class OutputSection extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.tID !== prevProps.tID) {
       this.setState({ transactionID: this.props.tID }, () => {
-        console.log(this.state.transactionID);
+        // console.log(this.state.transactionID);
 
         if (window.location.origin === "http://localhost:3000") {
           axios.defaults.baseURL = "http://localhost:8000";
@@ -28,7 +28,7 @@ class OutputSection extends React.Component {
         axios.defaults.baseURL = "http://retr0-su-nlp.duckdns.org:8000";
         axios.get("/api/texts/" + this.state.transactionID).then((res) => {
           let obj = JSON.parse(res.data.scores);
-          console.log(obj);
+          // console.log(obj);
           this.setState({
             summarizedText: res.data.summarizedText,
             jaccard: obj.Jaccard,
@@ -43,7 +43,6 @@ class OutputSection extends React.Component {
 
   render() {
     //random comment
-    console.log(typeof this.state.scores);
     return (
       <div className="ui container">
         <div className="ui one column grid">
