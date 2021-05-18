@@ -44,6 +44,21 @@ class InputSection extends React.Component {
           text: "Extractive: Lex Rank",
           value: "Extractive: Lex Rank",
         },
+        {
+          key: "huggingFace",
+          text: "Abstractive: HuggingFace Pipeline",
+          value: "Abstractive: HuggingFace Pipeline",
+        },
+        {
+          key: "t5",
+          text: "Abstractive: T5",
+          value: "Abstractive: T5",
+        },
+        {
+          key: "gpt",
+          text: "Abstractive: GPT-2",
+          value: "Abstractive: GPT-2",
+        },
       ],
       option: "Extractive: Similarity Matrix",
     };
@@ -54,6 +69,9 @@ class InputSection extends React.Component {
       "Extractive: KLSum": "klSummarizer",
       "Extractive: Luhn": "luhnSummarizer",
       "Extractive: Lex Rank": "lexRankSummarizer",
+      "Abstractive: HuggingFace Pipeline": "huggingFace",
+      "Abstractive: T5": "t5",
+      "Abstractive: GPT-2": "gpt",
     };
   }
 
