@@ -44,7 +44,9 @@ def readFile(path):
         else:
             return None
     else:
-        text = textract(path)
+        print(ext)
+        print(fileName)
+        text = textract(str(path))
         print(text)
         text = text.decode('utf-8')
 
