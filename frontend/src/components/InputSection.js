@@ -2,6 +2,9 @@ import React from "react";
 import "../css/InputSection.css";
 import axios from "axios";
 
+import { Dropdown } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+
 class InputSection extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +12,39 @@ class InputSection extends React.Component {
       text: "",
       file: null,
       error: true,
+      alloptions: [
+        {
+          key: "Extractive: Similarity Matrix",
+          text: "Extractive: Similarity Matrix",
+          value: "Extractive: Similarity Matrix",
+        },
+        {
+          key: "Extractive: Weighted Frequency",
+          text: "Extractive: Weighted Frequency",
+          value: "Extractive: Weighted Frequency",
+        },
+        {
+          key: "Extractive: LSA",
+          text: "Extractive: LSA",
+          value: "Extractive: LSA",
+        },
+        {
+          key: "Extractive: KLSum",
+          text: "Extractive: KLSum",
+          value: "Extractive: KLSum",
+        },
+        {
+          key: "Extractive: Luhn",
+          text: "Extractive: Luhn",
+          value: "Extractive: Luhn",
+        },
+        {
+          key: "Extractive: Lex Rank",
+          text: "Extractive: Lex Rank",
+          value: "Extractive: Lex Rank",
+        },
+      ],
+      option: "",
     };
   }
 
@@ -52,10 +88,24 @@ class InputSection extends React.Component {
     });
   };
 
+  summarizeOps = (e, data) => {
+    console.log(data.value);
+    this.setState({ option: data.value });
+  };
+
   render() {
     return (
       <div className="ui container">
         <div className="ui one column grid">
+          <div className="row">
+            <Dropdown
+              placeholder="Select Type of Summarizer"
+              selection
+              options={this.state.alloptions}
+              value={this.state.option}
+              onChange={this.summarizeOps}
+            />
+          </div>
           <div className="row">
             <h3>Enter Text Here</h3>
           </div>

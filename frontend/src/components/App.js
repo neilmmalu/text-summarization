@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/App.css";
+
 import InputSection from "./InputSection";
 import OutputSection from "./OutputSection";
 
@@ -28,6 +29,7 @@ class App extends React.Component {
         <h1 style={{ color: "white", fontSize: "50px", padding: "50px" }}>
           Text Summarization
         </h1>
+
         <div className="ui segment">
           <div className="ui two column very relaxed grid">
             <div className="column">
