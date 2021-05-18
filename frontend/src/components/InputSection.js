@@ -12,6 +12,7 @@ class InputSection extends React.Component {
       text: "",
       file: null,
       error: true,
+      type: null,
       allOptions: [
         {
           key: "similarityMatrix",
@@ -44,7 +45,15 @@ class InputSection extends React.Component {
           value: "Extractive: Lex Rank",
         },
       ],
-      option: "",
+      option: "Extractive: Similarity Matrix",
+    };
+    this.types = {
+      "Extractive: Similarity Matrix": "similarityMatrix",
+      "Extractive: NLTK": "nltkSummarizer",
+      "Extractive: LSA": "lsaSummarizer",
+      "Extractive: KLSum": "klSummarizer",
+      "Extractive: Luhn": "luhnSummarizer",
+      "Extractive: Lex Rank": "lexRankSummarizer",
     };
   }
 
@@ -57,6 +66,10 @@ class InputSection extends React.Component {
 
     if (this.state.file !== null) {
       formData.append("upload", this.state.file, this.state.file?.name);
+    }
+
+    if (this.state.type !== null) {
+      formData.append("summaryType", this.state.type);
     }
 
     axios.post("http://localhost:8000/api/texts/", formData).then((res) => {
@@ -89,9 +102,8 @@ class InputSection extends React.Component {
   };
 
   summarizeOps = (e, data) => {
-    console.log(data.value);
-    console.log(data.key);
-    this.setState({ option: data.value });
+    console.log(this.types[data.value]);
+    this.setState({ option: data.value, type: this.types[data.value] });
   };
 
   render() {
@@ -100,7 +112,6 @@ class InputSection extends React.Component {
         <div className="ui one column grid">
           <div className="row">
             <Dropdown
-              placeholder="Select Type of Summarizer"
               selection
               options={this.state.allOptions}
               value={this.state.option}
