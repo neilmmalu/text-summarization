@@ -48,6 +48,7 @@ class Text(LifecycleModelMixin, models.Model):
         if self.inputText:
             txt = self.inputText
         else:
+            print(str(self.upload))
             txt = readFile(str(self.upload))
 
         sumStr, scores = summarize(txt, self.summaryType)
