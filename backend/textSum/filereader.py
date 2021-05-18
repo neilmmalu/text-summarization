@@ -18,11 +18,6 @@ def getFileExtension(fileName):
     return fileName.split('.')[-1]
 
 
-def cleanText(text, ext):
-    # Clean the text based on extension
-    return text
-
-
 def readWebVTT(fileName):
     d = defaultdict(list)
     for caption in webvtt.read(fileName):
@@ -38,7 +33,7 @@ def readWebVTT(fileName):
 def readFile(path):
     fileName = getFileName(path)
     ext = getFileExtension(fileName)
-    print(ext)
+    text = ""
     if ext not in extensions:
         if ext == "htm" or ext == "html":
             # HTML reader
@@ -50,7 +45,7 @@ def readFile(path):
             return None
     else:
         text = textract(path)
+        print(text)
         text = text.decode('utf-8')
 
-    cleanedText = cleanText(text, ext)
-    return cleanedText
+    return text
