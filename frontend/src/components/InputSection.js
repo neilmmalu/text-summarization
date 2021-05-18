@@ -89,9 +89,19 @@ class InputSection extends React.Component {
     if (this.state.type !== null) {
       formData.append("summaryType", this.state.type);
     }
+    
+      if(window.location.origin === "http://localhost:3000"){
+          axios.defaults.baseURL = "http://localhost:8000";
+      } else {
+          axios.defaults.baseURL = window.location.origin + ":8000";
+      }
 
-    axios.post("http://localhost:8000/api/texts/", formData).then((res) => {
+      console.log(axios.defaults.baseURL + "/api/texts/");
+
+    axios.post("/api/texts/", formData).then((res) => {
       this.props.update(res.data.transactionID);
+    }).catch((err) => {
+        console.log(err);
     });
   };
 

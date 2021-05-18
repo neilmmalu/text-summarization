@@ -15,8 +15,15 @@ class OutputSection extends React.Component {
     if (this.props.tID !== prevProps.tID) {
       this.setState({ transactionID: this.props.tID }, () => {
         console.log(this.state.transactionID);
+
+        if(window.location.origin === "http://localhost:3000"){
+            axios.defaults.baseURL = "http://localhost:8000";
+        } else {
+            axios.defaults.baseURL = window.location.origin + ":8000";
+        }
+
         axios
-          .get("http://localhost:8000/api/texts/" + this.state.transactionID)
+          .get("/api/texts/" + this.state.transactionID)
           .then((res) => {
             this.setState({ summarizedText: res.data.summarizedText });
           });

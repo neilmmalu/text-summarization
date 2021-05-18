@@ -55,14 +55,14 @@ class Text(LifecycleModelMixin, models.Model):
 
         sumStr = "Dummy summarized text"
         sumStr, scores = summarize(txt, self.summaryType)
-
+        print(type(scores[0]))
         t = Text.objects.get(transactionID=self.transactionID)
         t.summarizedText = sumStr
         t.completed = True
         t.scores = json.dumps(dict({
-            "Jaccard": scores[0],
-            "Cosine": scores[1],
-            "Gensim": scores[2],
-            "Rogue": scores[3]
+            "Jaccard": str(scores[0]),
+            "Cosine": str(scores[1]),
+            "Gensim": str(scores[2]),
+            "Rogue": str(scores[3])
         }))
         t.save()
