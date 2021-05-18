@@ -3,10 +3,9 @@ import webvtt
 from collections import defaultdict
 
 extensions = {
-    '.csv', '.doc', '.docx', '.eml', '.epub', '.gif', '.jpeg', '.jpg', '.json',
-    ' .log', '.mp3', '.msg', '.odt', '.ogg', '.pdf', '.png', '.pptx', '.ps',
-    '.psv', '.rtf', '.tff', '.tif', '.tiff', '.tsv', '.txt', '.wav', '.xls',
-    '.xlsx'
+    'csv', 'doc', 'docx', 'eml', 'epub', 'gif', 'jpeg', 'jpg', 'json', ' log',
+    'mp3', 'msg', 'odt', 'ogg', 'pdf', 'png', 'pptx', 'ps', 'psv', 'rtf',
+    'tff', 'tif', 'tiff', 'tsv', 'txt', 'wav', 'xls', 'xlsx'
 }
 
 
