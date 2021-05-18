@@ -8,6 +8,7 @@ class OutputSection extends React.Component {
     this.state = {
       summarizedText: "",
       transactionID: "",
+      scores: "",
     };
   }
 
@@ -16,17 +17,18 @@ class OutputSection extends React.Component {
       this.setState({ transactionID: this.props.tID }, () => {
         console.log(this.state.transactionID);
 
-        if(window.location.origin === "http://localhost:3000"){
-            axios.defaults.baseURL = "http://localhost:8000";
+        if (window.location.origin === "http://localhost:3000") {
+          axios.defaults.baseURL = "http://localhost:8000";
         } else {
-            axios.defaults.baseURL = window.location.origin + ":8000";
+          axios.defaults.baseURL = window.location.origin + ":8000";
         }
 
-        axios
-          .get("/api/texts/" + this.state.transactionID)
-          .then((res) => {
-            this.setState({ summarizedText: res.data.summarizedText });
+        axios.get("/api/texts/" + this.state.transactionID).then((res) => {
+          this.setState({
+            summarizedText: res.data.summarizedText,
+            scores: res.data.scores,
           });
+        });
       });
     }
   }
@@ -46,6 +48,9 @@ class OutputSection extends React.Component {
               className="textarea"
               value={this.state.summarizedText}
             ></textarea>
+          </div>
+          <div className="row">
+            <span>{this.state.scores}</span>
           </div>
         </div>
       </div>

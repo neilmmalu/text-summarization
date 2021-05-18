@@ -12,6 +12,7 @@
 /backend/*sqlite3
 /backend/uploads/*
 /backend/backend/__pycache__/*
+/backend/textSum/__pycache__/*
 
 # production
 /build
