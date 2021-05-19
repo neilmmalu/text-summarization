@@ -7,7 +7,7 @@ import numpy as np
 import networkx as nx
 
 
-def sentence_similarity_summarizer(text, numberof_top_sent=5):
+def sentence_similarity_summarizer(text, numberof_top_sent=-1):
     def read_article(file_name):
         article = file_name.split(". ")
         sentences = []
@@ -64,6 +64,9 @@ def sentence_similarity_summarizer(text, numberof_top_sent=5):
 
         top_n = min(top_n, len(sentences))
 
+        if top_n == -1:
+            top_n = len(sentences) // 2
+
         # Step 2 - Generate Similary Martix across sentences
         sentence_similarity_martix = build_similarity_matrix(
             sentences, stop_words)
@@ -85,5 +88,4 @@ def sentence_similarity_summarizer(text, numberof_top_sent=5):
         #print("Summarize Text: \n", ". ".join(summarize_text))
         return ". ".join(summarize_text)
 
-    print(text)
     return generate_summary(text, numberof_top_sent)
