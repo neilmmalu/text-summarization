@@ -1,6 +1,7 @@
 from .evaluate import summary_evaluation
 from .nltkSum import nltk_summarizer
 from .sumySum import *
+from .similaritySum import sentence_similarity_summarizer
 
 
 def similarityMatrix(text):
@@ -23,7 +24,7 @@ def summarize(text, summaryType):
     summarizedText = text
     print(summaryType)
     if summaryType == "similarityMatrix":
-        summarizedText = similarityMatrix(text)
+        summarizedText = sentence_similarity_summarizer(text)
     elif summaryType == "nltkSummarizer":
         summarizedText = nltk_summarizer(text)
     elif summaryType == "lsaSummarizer":
