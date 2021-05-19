@@ -4,10 +4,6 @@ from .sumySum import *
 from .similaritySum import sentence_similarity_summarizer
 
 
-def similarityMatrix(text):
-    return text
-
-
 def huggingFace(text):
     return text
 
