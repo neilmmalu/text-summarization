@@ -62,6 +62,8 @@ def sentence_similarity_summarizer(text, numberof_top_sent=5):
         # Step 1 - Read text anc split it
         sentences = read_article(file_name)
 
+        top_n = min(top_n, len(sentences))
+
         # Step 2 - Generate Similary Martix across sentences
         sentence_similarity_martix = build_similarity_matrix(
             sentences, stop_words)
