@@ -50,8 +50,10 @@ class Text(LifecycleModelMixin, models.Model):
         else:
             txt = readFile(str(self.upload))
 
-        print(self.summaryType)
-        sumStr, scores = summarize(txt, self.summaryType)
+        summaryType = self.summaryType
+        if not summaryType:
+            summaryType == "similarityMatrix"
+        sumStr, scores = summarize(txt, summaryType)
         print(type(scores[0]))
         t = Text.objects.get(transactionID=self.transactionID)
         t.summarizedText = sumStr
