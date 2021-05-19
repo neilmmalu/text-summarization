@@ -85,4 +85,5 @@ def sentence_similarity_summarizer(text, numberof_top_sent=5):
         #print("Summarize Text: \n", ". ".join(summarize_text))
         return ". ".join(summarize_text)
 
+    print(text)
     return generate_summary(text, numberof_top_sent)
