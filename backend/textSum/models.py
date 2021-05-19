@@ -50,7 +50,7 @@ class Text(LifecycleModelMixin, models.Model):
         else:
             txt = readFile(str(self.upload))
 
-        print(txt)
+        print(self.summaryType)
         sumStr, scores = summarize(txt, self.summaryType)
         print(type(scores[0]))
         t = Text.objects.get(transactionID=self.transactionID)
