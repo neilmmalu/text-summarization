@@ -45,7 +45,8 @@ def t5_summarizer(text):
                              num_beams=4,
                              early_stopping=True)
 
-    return tokenizer.decode(outputs[0])
+    tempStr = tokenizer.decode(outputs[0])
+    return ' '.join(tempStr.split()[1:-1])
 
 
 def gpt_summarizer(text):
