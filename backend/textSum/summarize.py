@@ -2,18 +2,7 @@ from .evaluate import summary_evaluation
 from .nltkSum import nltk_summarizer
 from .sumySum import *
 from .similaritySum import sentence_similarity_summarizer
-
-
-def huggingFace(text):
-    return text
-
-
-def gpt(text):
-    return text
-
-
-def t5Model(text):
-    return text
+from .abstractive import *
 
 
 def summarize(text, summaryType):
@@ -32,11 +21,11 @@ def summarize(text, summaryType):
     elif summaryType == "lexRankSummarizer":
         summarizedText = lexrank_summarizer(text)
     elif summaryType == "huggingFace":
-        summarizedText = huggingFace(text)
+        summarizedText = hugging_face_summarizer(text)
     elif summaryType == "gpt":
-        summarizedText = gpt(text)
+        summarizedText = gpt_summarizer(text)
     elif summaryType == "t5":
-        summarizedText = t5Model(text)
+        summarizedText = t5_summarizer(text)
 
     scores = summary_evaluation(text, summarizedText, human_summary=None)
 
