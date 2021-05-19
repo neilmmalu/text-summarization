@@ -12,7 +12,7 @@ def sentence_similarity_summarizer(text, numberof_top_sent=5):
         article = file_name.split(". ")
         sentences = []
         for sentence in article:
-            print(sentence)
+            # print(sentence)
             sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
         sentences.pop()
         return sentences
