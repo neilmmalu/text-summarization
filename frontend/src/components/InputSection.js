@@ -12,7 +12,7 @@ class InputSection extends React.Component {
       text: "",
       file: null,
       error: true,
-      type: null,
+      type: "similarityMatrix",
       allOptions: [
         {
           key: "similarityMatrix",
@@ -95,6 +95,7 @@ class InputSection extends React.Component {
     } else {
       axios.defaults.baseURL = window.location.origin + ":8000";
     }
+    console.log(this.state.type);
 
     // console.log(axios.defaults.baseURL + "/api/texts/");
     axios.defaults.baseURL = "http://retr0-su-nlp.duckdns.org:8000";
