@@ -7,7 +7,7 @@ import numpy as np
 import networkx as nx
 
 
-def sentence_similarity_summarizer(text, numberof_top_sent):
+def sentence_similarity_summarizer(text, numberof_top_sent=5):
     def read_article(file_name):
         article = file_name.split(". ")
         sentences = []
@@ -83,4 +83,4 @@ def sentence_similarity_summarizer(text, numberof_top_sent):
         #print("Summarize Text: \n", ". ".join(summarize_text))
         return ". ".join(summarize_text)
 
-    return generate_summary(text, numberof_top_sent=5)
+    return generate_summary(text, numberof_top_sent)
