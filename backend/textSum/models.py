@@ -52,7 +52,7 @@ class Text(LifecycleModelMixin, models.Model):
 
         summaryType = self.summaryType
         if not summaryType:
-            summaryType == "similarityMatrix"
+            summaryType = "similarityMatrix"
         print(summaryType)
         sumStr, scores = summarize(txt, summaryType)
         print(type(scores[0]))
